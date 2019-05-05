@@ -1,0 +1,346 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{check\}}{\leveltext\leveltemplateid1\'01\uc0\u10003 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0  \
+\pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural\qc\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	
+\f1 \uc0\u10003 
+\f0 	}
+\b Drag And Drop
+\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-29 at 12.00.55 PM.png \width13820 \height5940 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+Drag and Drop which is way of sharing information between apps , \
+especially with iOS 11 because on the iPad , there's quite a great multitasking ability to have 2 apps on screen at same time \
+and like nice to be able to drag and drop between them\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-29 at 12.06.43 PM.png \width14980 \height4820 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+Drag and Drop is  literally just press and hold , which we call a long press in iOS on something that can be dragged and start moving and when you do, the operating system iOS is going to let you drag that thing around and then you can drag it over things that might receive it and let go and t drops them in there.\
+\
+Using drag and drop on the desktop all the time , so now we have multitasking . what's really incredible about the way they did drag and drop.\
+Is that while you are doing and dropping and you are dragging things around you can use your other fingers and still completely use your UI however you want\
+So drag and drop is not interfered with the operation of the iPad at all \
+which is quite amazing because you could be in the middle of a dragging and say oh well actually I need to navigate to this other part of my app to drop that and it will work and it's kind of the value of having multi touch , multi fingers ,\
+You can also be in the middle of a drag and say I want to drag these other things too and just tap on other things and they will add it to the drag so they really use the multi fingers of multi touch to great effect with drag and drop \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-29 at 1.21.35 PM.png \width14180 \height5300 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\b \cf0 So how do we implement drag and drop , what do we do in our code if we want to participate in drag and drop ??\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\b0 \cf0 The real gateway to making this work is through these things called "
+\b interactions"
+\b0 \
+\
+So dragging and dropping is a View thing it's a UI thing,\
+In the same way gestures are kind of a UIView thing , you can sort of think of drag and drop is just another really powerful gesture, if you want\
+ but you don't enable drag and drop by adding the gesture recognizer instead you do it by adding a dropInteraction or a dragInteraction \
+but it looks almost exactly the same as adding a gesture recognizer \
+UIView just has this method called addInteraction \
+and it takes either a drag or drop interaction that you create \
+and the drag or drop interaction is created really easily it just has 1 argument to its delegate \
+and then whats gonna happen is when it is drag or a drop or both you can have a view both starts the delegate is going to start receiving some messages and you have to respond to those messages that are sent to it if you want to participate and those messages are really easy to respond to \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-29 at 1.21.59 PM.png \width14360 \height8540 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+So let's take a look at that let's first look at being a drag person  \
+A view that has something in view that you want to drag into other apps .\
+If once you register that dragInteraction on your view then when user does that long press and move which looks like a drag .\
+The drag and drop , you gonna get this message 
+\b dragInteraction(itemsForBeginning)
+\b0   and this is really simple you are just gonna return an \
+Array of items you are willing to have dragged from your view .\
+\
+\
+\
+So what does an dragItem look like?\
+Well dragItem really only has one important thing which is what's called an 
+\b itemProvider
+\b0  .\
+
+\b Now ItemProvider is just something that can provide the data that's gonna be dragged and you might ask well how come the dragItem just doesn't have the data the thing you wanna drag\
+ and the reason is it might be expensive for you to create that data
+\b0 \
+maybe it's an image or something you have to load up for some reason or do something else \
+
+\b So drag and drop is incredibly completely asynchronous
+\b0 \
+You start that drag and it's really lightweight and it's dragging around and almost nothing is happening as this happens \
+But then when the drop happens then if you are an item provider you have to actually give the data out , even if that takes a certain amount of time , so that why we provide a itemProvider .\
+Now luckily there's a lot of built in
+\b  itemProvider , 
+\b0 \
+Classes that already exist in iOS that our itemProviders like NSAttributedString,\
+So you can drag pick up pieces of  text and they will drag around with their fonts and everything \
+There's  also NSString which is text without the font,\
+UIImage of course you can pick up and drag images around \
+NSURL that's really nice one you go into a web page , you pick up a URL and drop it , \
+may be it's a reference to an article or a URL for an image\
+UIColor ,\
+mapItem\
+Contact in address book\
+etc.\
+A lot of things you can pick up and move these are all itemProviders\
+\
+So to create a dragItem \
+You just create them with NSItemProvider and provide the object that is going to provide the data\
+\
+Now ofCourse you can write your own itemProvider that provides your own kind of data  , but of times you just gonna use these nice pre-made one's\
+\
+There's one other thing in dragItem which is for local drags,\
+drag and drop can work within an app and between apps \
+It only works between apps on iPad because you can only get 2 apps on screen at same time in iPad \
+but on iPhone and iPad you can do it inside the app \
+\
+And if you drag and drop inside the app then you kinda short circuit all this itemProvider business \
+and just use this little var 
+\b localObject
+\b0  in your dragItem and that's just mean you are dragging this local object and that local object \
+and that localObject can be anything it's of type 
+\b Any
+\b0  \
+so you can put anything you want there and drag and drop to drag anything in your app from one place to another .\
+\
+\
+\
+So that's just getting your drag started , you just got to provide this items for beginning array and that's it\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screenshot 2019-04-30 at 11.51.59 AM.png \width14320 \height4840 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+If in the middle of a drag someone uses another finger to pick on something else that they want to drag then you get this message \
+itemsForAddingTo session\
+And all you have to do there is provide an array of dragItems\
+Often that array of dragItems will just be 1 dragItem or it can be empty \
+you neither items for give beginning or items for  adding 2 if you returning an empty array here means I don't have anything to drag , thanks for asking \
+So it's really easy to just not participate if you dont want to\
+So that makes the drag start and that's it\
+that's all you have to do to be a 
+\b dragSource
+\b0 \
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-05-01 at 7.49.34 PM.png \width15000 \height6620 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\b \cf0 Now what about accepting a drop ?
+\b0 \
+Now you are at other side of drop zone and  and dropped it on you ...!!!\
+Well this is kinda a multi step process \
+(1) You gonna get this message sent to you (again this is if you have added interaction "UIDropInteraction" to UIView) you gonna get this message when a drag starts heading your way \
+which is 
+\b canHandle
+\b0  , \
+i.e.   UIDropInteration canHandle \
+and you are gonna get this  session thing and it return's a bool which is whether you can handle a drag like that \
+So what a drag like that mean?\
+Well you have to look at this session that it passed you there that UIDragSession \
+and you are usually gonna call 1 method in it  \
+which is 
+\b canLoadObjects(ofClass: )
+\b0 \
+You gonna ask that session \
+well can you provide a NSString?\
+If so I am in \
+can you provide a UIImage ?\
+i am in\
+Or if not can't provide the things you are interested in , then you just return false... from this canHandle Session \
+and It won't bother you anymore turning this drag \
+\
+So that's to get it started ...\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-05-01 at 7.50.09 PM.png \width14820 \height6280 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+(2) Now if you were to say yes I can loadObjects of that type \
+then you gonna start getting this\
+sessionDidUpdate\
+message sent to you ,\
+Again  this is going to pass that session to you and session might have changed a little \
+because maybe the finger has moved a little bit and maybe that changes your decision whether you want to accept this drop\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\b \cf0 but what you return from sessionDidUpdate  is a UIDropProposal
+\b0 \
+Now this is your proposal as a drop receiver  for what you are willing to do with this  drop\
+\
+\
+And there's really 3 things you can do \
+You can have  dropProposal which is cancelled \
+which is to say I propose cancelling this drop if you want to try and drop it right where you are now because I don't accept it there\
+And the drag will have a little icon that appears on it which is like (red circle with a line through it saying no you cant drop here)\
+\
+Then there is copy and move\
+Copy and move is a proposal it says yes I propose  I will receive this drop and I will either copy the item or  move it\
+Now copy is most often you gonna do here \
+move would only make sense for a drag within your app , because you are going to be moving it from whereever it was it wont be ther anymore and now it's gonna be in new place that can only happen within your own app,\
+So move is only inside your own app if you are actually moving  the thing rather than copying and making a copy of it\
+If some1 is dragging  and outside you are always gonna copying it \
+\
+So it did you just have to say cancel , move or copy  each time you are asked about this \
+\
+By the way you can look at the session and find out where the finger is in your view by asking the 
+\b session.location( in : view )
+\b0 \
+So some place in your view would be you will accept a drop and in some place not at all \
+\
+So this proposal is kinda of a contract to accept the drop if it were to be dropped at this location \
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-05-01 at 8.39.06 PM.png \width14300 \height7520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+So if you do accept it \
+Then if you dont say  .cancel there in your proposal then you will get \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\b \cf0 performDrop
+\b0  \
+when the finger is released and the drop happens \
+now perform drop you gonna get that session back again \
+here you almost always gonna call 1 method which is \
+
+\b loadObjects(ofClass:)
+\b0 \
+So we already saw the\
+ canLoadObject(ofClass : )\
+Now we have actual\
+ loadObjects(ofClass : )\
+Now this is awesome little method , this is one of the ways they made dragAndDrop so simple to implement with all that asynchrony but without a lot of difficulty in your app which is you just call \
+loadObjects(ofClass : )\
+You specify the class you are willing to receive from the drop so like AttributedString or a color or a URL or a Image or whatever\
+Presumably the things you say you would accept earlier on \
+ and it will go and get that data asynchronously on an another thread \
+and when it gets it all from the dragSource \
+It will call the closure you provide with first argument of being an array of those things \
+\
+So in this case I am saying \
+loadObjects(ofClass : NSAttributedString )\
+So it gonna call that closure with "theStrings"  being an array of   NSAttributedString \
+Now it's actually an array of something that implements the provider protocols \
+So you are gonna have to cast it with "as"\
+but it's essentially array of those NSAttributedString \
+and similarly you can do UIImage.self and all that\
+\
+
+\b btw  NSAttributedString.self that's the way you specify the class NSAttributedString , if you want to pass it as a  arguments to a function
+\b0 \
+we haven't seen that before but that's all you do \
+
+\b And this  closure is sent you and implemented on the main Queue
+\b0 \
+So you can feel free to do UIStuff here\
+You dont have to dispatch main queue if you dont want to\
+So it's really really super convenient \
+To do whatever you want  \
+And you accept this drop and it might take a little while for this information to appear but when it does you just have the code right here automatically executed \
+and you can do loadObjects(ofClass : ) multiple different classes in the same drop \
+\
+we are gonna accept drags that are images but that also have a URL for  the images so we are looking for 2 pieces data in same drag a URL and a Image and we we will be doing loadObjects of class both  of URL and  of UIImage \
+Perfectly legal , they both will be happening asynchronously you don't know which one gonna finish first \
+but you have got to write  your code so it doesn't matter , but that's all you need to do and that's all you need to do in perform Drop \
+you are not really gonna do much else  is just get that data start coming you way \
+So that did drag and drop \
+\
+\
+\
+\
+\
+\
+Summary:-\
+\
+Done with DragAndDropInteraction Docs\
+(1) create a dragAndDropInteraction(delegate)  -> add it to view.addInteraction()\
+(2) dragInteraction(itemsForBeginning) -> [UIDragItem]   ,  UIDragItem has itemProvider (which provides data)    even while dragging a user can add item using itemsForAdding\
+(3) DropInteraction (canHandle) for accepting drop and canLoadObjetcs(ofClass:)  to accept which kind of Objects are allowed\
+(4) DropInteraction(SessionDidUpdate) -> UIDropProposal   which can be cancel, copy,  move  to approve a vacation type of approval    session.location(in:view) gives location of finger in view\
+(5) DropInteraction(interaction) performDrop  to perform drop action   and session.loadObjects(ofClass:) to load the  Objects which are allowed , this  loadObjects takes a closure which happens on main Thread so can do UI stuff here\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
