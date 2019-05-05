@@ -61,7 +61,12 @@ class EmojiArtTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if splitViewController?.preferredDisplayMode != .primaryOverlay{
+            splitViewController?.preferredDisplayMode = .primaryOverlay
+        }
+    }
     
     
     
@@ -153,4 +158,29 @@ class EmojiArtTableViewController: UITableViewController {
  And I strongly recommend using one of these predefined one's if it describes what you are doing because user will be used to that icon or that image doing what you expect right there
  
  Normal this just a normal bar button and we can just ctrl drag to it to create an outlet
+ */
+
+
+
+/*
+ Currently we where unable to swipe tableview i.e. master of splitView away
+That's because this app thinks we are in landscape mode on an iPad
+ of course this master and detail are side by side but since we are in multitasking mode so much of our screen is taken up with safari over on right that's its annoying because we really want to focus on EmojiArtDocument
+ So lets make it so that the splitView on the left can be slid out of the way even in the splitView in landscape mode
+ 
+ It's quite easily though splitView has a var property called "prefered display mode"
+ and you can control what happens with the master through that and it's just that the defualt here is not what we want
+ 
+ So we gonna set this thing in our master
+ And we will set it in viewWillLayoutSubviews
+ Wow that seems weird place to set there
+ the reason i am gonna set there is because when the layout changes of a splitView it often  resets the prefered mode
+ So I am gonna keep enforcing master being slide on top mode I am have to keep telling it to do that
+ But i am also have to careful because setting that prefered mode can cause it to relay out, So i dont want to end up in an infinite loop here
+ where in layoutSubviews preferred mode it's causing layout i am coming back in
+ if splitViewController?.preferredDisplayMode != .primaryOverlay{
+ splitViewController?.preferredDisplayMode = .primaryOverlay
+ }
+ 
+ primaryOverlay will keep it enforcing everytime even everytime we rotate or i am keep forcing it because I always want this tableView to be appearing on top of my EmojiArtView but I also want it to swipe it out of my way 
  */

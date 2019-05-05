@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GvH-Mz-Idd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GvH-Mz-Idd">
     <device id="ipad12_9rounded" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,8 +15,8 @@
             <objects>
                 <splitViewController id="GvH-Mz-Idd" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="showDetail" id="dNs-mi-zJO"/>
                         <segue destination="Sm1-PX-mdC" kind="relationship" relationship="masterViewController" id="c7R-Vw-rPG"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="fMi-9D-bIn"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Do-mG-oCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -26,7 +26,7 @@
         <!--Emoji Art Table View Controller-->
         <scene sceneID="2N3-80-aRH">
             <objects>
-                <tableViewController id="8tF-yC-Jsq" customClass="EmojiArtTableViewController" customModule="EmojiArtDragnDropCollectionnTable" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8tF-yC-Jsq" customClass="EmojiArtTableViewController" customModule="EmojiArtDragnDropCollectionnTableP2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ETY-qS-ArB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,16 +70,16 @@
         <!--Emoji Art View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EmojiArtViewController" customModule="EmojiArtDragnDropCollectionnTable" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EmojiArtViewController" customModule="EmojiArtDragnDropCollectionnTableP2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="990.5" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-uo-kcG">
-                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
+                                <rect key="frame" x="0.0" y="24" width="990.5" height="980"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwa-jy-WTi" customClass="EmojiArtView" customModule="EmojiArtDragnDropCollectionnTable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="980"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwa-jy-WTi" customClass="EmojiArtView" customModule="EmojiArtDragnDropCollectionnTableP2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="990.5" height="980"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -108,6 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-658" y="391"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aVG-wP-nNc">
