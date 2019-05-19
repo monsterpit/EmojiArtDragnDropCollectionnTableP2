@@ -10,16 +10,6 @@ import UIKit
 
 class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrollViewDelegate , UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout , UICollectionViewDragDelegate,UICollectionViewDropDelegate{
 
-    
-
-    
-    
-    //UICollectionViewDelegateFlowLayout this 1 you automatically get to be when you are delegate of collectionView
-    // This is the delegate of the thing that does all text like flowing layout
-    // remember collectionView layout is completely configurable  but this 1 is the default one so throw this 1 in too it helps escape completion and all those stuffs
-    
-    
-
     @IBOutlet weak var dropZone: UIView! {
         didSet{
             dropZone.addInteraction(UIDropInteraction(delegate: self))
@@ -136,10 +126,7 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
     
     //MARK:- Dynamic Font accessibility UIFontMetrics Accessbility
     private var font : UIFont  {
-        //WithSize so I want 64 points but I want to scale with with whatever the accessibility thing is
-        // So If accessibility font is at middle the font I am gonna do is 64 , can do bigger and wit will be bigger than 64 and smaller
-        // Now this wouldnt work very well because I dont change collectionview size < If i set this big it will be cut off and If I set it really small the collection viwe wont shrink up to kind of hold it
-        //TODO:- To make collectionView cell size accordin to font accessibility size using layout constraint that  is constaint layout outlet
+        
         return UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.preferredFont(forTextStyle: .body).withSize(64.0))
     }
     
@@ -160,16 +147,12 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         
         //MARK: - Context of Session to track who is it
-    // So what we gonna do is that when we start our drag up in itemForBeginning  we gonna set something in session called localContext and this is type Any
-        // This is just something in drag session that lets drop's people who drop know hey this is a local drag  and here's the context of it
-        // well this drag is coming from collectionview  I am gonna use collectionView as context
         session.localContext = collectionView
         
         return dragItems(at : indexPath)
     }
     
     // So remember you can start a drag and add more items by tapping on them so you could be dragging multiple things at once that's easy to implement as well just like we have item
-    //Just like  we have "itemsForBeginning" we have "itemsForAddingTo"
     func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
         return dragItems(at : indexPath)
     }
@@ -198,66 +181,20 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         
-        // intent says are you dropping into this cell or you wanna add a cell
-        // if we are dragging inside collectionView we dont want the emoji to be copied and we dont want a replica of it so we .move
-        // so for .move we have to know somehow that we are inside the collectionView
-        // So what we gonna do is that when we start our drag up in itemForBeginning  we gonna set something in session called localContext and this is type Any
-        
-        // So now we can look at the local context up here to determine where my drop proposal should be copy or move
-        
         let isSelf = (session.localDragSession?.localContext as? UICollectionView) == collectionView
         
         return UICollectionViewDropProposal(operation: isSelf ? .move : .copy , intent: .insertAtDestinationIndexPath)
     }
-    
-    
-    //When drop happens we have to update our model and our collectionView
-    //Also there are 2 different types of drop here
-    //There's a drop where its coming from my collectionView in which case i have to drop it in new place and remove it from old place because i am moving
-    //And then theirs a drop which is coming from some other app i.e. safari to collectionView tap and hold cursor on text and move it to collectionView
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        
-        //coordinator gives us the destination Path
-        // nil if we are putting it at start or end not in between of items
-        // So we are providing a default position
-        let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
-        // So now we now where we are dropping the drop and now its just matter of going through all the items  in coordinators items this items are UICollectionViews dropItems
-        // And they have very interesting peices of information for e.g.
-        
-        //if let sourceindexPath = item.sourceIndexPath This ensure that our drag is coming from ourself  so we dont even have to look at the localContext in this case to know this is coming from me
-        // And now we know the source and the destination
-        //If the item originated from the collection view, this property contains the item's original index path.
 
-        //So all we need to here is update our model and let source go into destination and then update the collectionview to remove the one from source and add it to other one
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+
+        let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
+
         for item in coordinator.items{
             if let sourceindexPath = item.sourceIndexPath{
-                
-                // As we stashed it to localObject we dont have to do NSProvider Stuff but we have to cast it  as NSAttributedString because its Any
+
                 if let dragItem = item.dragItem.localObject as? NSAttributedString {
-                    
-                    
-                    // ----------------------------------------------------///
-                 //   emojis.remove(at: sourceindexPath.item)
-                //    emojis.insert(dragItem.string, at: destinationIndexPath.item)
-                    
-                    //MARK:- Dont reload the data in middle of drag
-                    // Dont reload data in middle of drag because it resets the whole world it's bad dont do it
-                    //So instead we have to remove and insert the items separately
-                    
-                  //  collectionView.deleteItems(at: [sourceindexPath])
-                    
-                  //  collectionView.insertItems(at: [destinationIndexPath])
-                    
-                    // ----------------------------------------------------///
-                    
-                    // So this looks it will work fine but actualy its gonna crash the program
-                    // The reason for that is when you do multiple changes to collectionView each step will require model to be completly in sync which it wouldnt be until I do both of this the table wount be in sync with the model
-                   
-                    //MARK:- So dont forget to do batchUpdates if you do multiple adjustment to your tableView or CollectionView
-                    // theres a really cool way to get around that which is collectionView and tableView both has this methods called
-                    //collectionView.performBatchUpdates(<#T##updates: (() -> Void)?##(() -> Void)?##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
-                    // It just has a closure , In that closure you can put any number of  this deleteItems ,insertItems,moveItems whatever you want and it will do them all as one operation so that it never gets out of sync with the model
-                    // It also has a nice completion thing when it's done with all update it will call that completion closure
+
                     collectionView.performBatchUpdates({
                         
                         emojis.remove(at: sourceindexPath.item)
@@ -269,79 +206,38 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
                         
                     })
                     
-                    //Then last thing we want to do is ask the coordinator to do the drop
-                    //The reason we need to do this is we need to animate the drop happening there
-                    
                     coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
                 }
                 
             }
             else{
-                // We dont have sourceindexPath that means it comes from somewhere else
-                
-                // Its quite easy but there's a little problem here if you are dragging something from outside and you drop it is that information immediately available? no you have to asynchronously go and fetch it from thjat thing well what the heck you gonna do with your table while you are off fetching the data what if it takes 10 seconds so what yu do is you place a placeholder in your table and collectionView manages all that for you so all you have to do is  when the data finally does  arrives to you tell the placeHolder context its called okay i got the info update your model and it will automatically swap out the placeholder cell for one of your cell that matches the  kind of data you have
-                
-                //UICollectionViewDropPlaceholder(insertionIndexPath: <#T##IndexPath#>, reuseIdentifier: <#T##String#>) requires where you gonna put this placeholder reuseIdentifier is asking for reuseIdentifier in you storyboard to use to creatthat thing so I am gonna call mine DropPlaceholderCell you can call anything you want this is just the string that we are using in our storyboard to create this thing
-                
-
-                
-                //Now what's interesting is you can also include a  closure and in that closure you can basically intialize thsi cell or do the same kind of thing you do  where you would do dequeReusableCell because that dequeReusableCell is never gonna be called is never gonna be called because its the placeHolder cell its not gonna call that thing so here you can do same kind of setup if you had outlet in your cell or whatever you can set them all up we are not gonna have any outlet's in our so we are not going to do it but that's where you would do it
-                
-//                let placeHolderContext  = coordinator.drop(
-//                    item.dragItem,
-//                    to: UICollectionViewDropPlaceholder(insertionIndexPath: destinationIndexPath, reuseIdentifier: "DropPlaceholderCell")
-//                ) {}
-                
-                //So it doesnt require a label in placeholderCell in storyboard has information hasnt arrived yet So instead I am gonna put an activity indicator in there
-                
                                 let placeHolderContext  = coordinator.drop(
                                     item.dragItem,
                                     to: UICollectionViewDropPlaceholder(insertionIndexPath: destinationIndexPath, reuseIdentifier: "DropPlaceholderCell")
                                 )
-                
-                //So now we have done placeholderCell in storyBoard ready to go all we need to do now  go get the data and when it arrives just tell the placeholder context here's go swap when out here's my model change
-                
-                // So I am gonna get the data alittle differently last time we used that method
-                // loadObjects on session to load up the objects remember that when we dropped the image in there this time i am just gonna grab one object
-                
-                //and it is back to me asynchronously with a provider
+
                 item.dragItem.itemProvider.loadObject(ofClass: NSAttributedString.self) { (provider, error) in
-                    
-                    
-                    
-                    //Has it is in async and we need to update UI we dispatch it to main Queue
+
                     DispatchQueue.main.async {
                         
                         if let attributedString = provider as? NSAttributedString{
                         placeHolderContext.commitInsertion(dataSourceUpdates: { (insertionIndexPath) in
-                            //Code to fix my model
+       
                             self.emojis.insert(attributedString.string, at: insertionIndexPath.item)
                         })
                         }
                         else{
-                            //If we cant convert to NSAttributedString there may be a error so we ant to delete that placeholder
+
                             placeHolderContext.deletePlaceholder()
                         }
                     
                     }
 
                 }
-                
-                //That's it it's all we need to do and it will automatically replace that placeholder with the cell by calling the normal self.ItemAt method
-                
-                //Notice that insertionIndexPath might be different than the destinationIndexPath
-                //why? because this might have taken 10 seconds so might have changed other things in collectionView might have been going on new cell adding and other things came faster whatever So you are always using insertionIndexpath to update the model
-                // So how do I update the model here
+
             }
         }
     }
-    
-    //For loading in collectionview all the cell are custom  cell so you have to a subclass it
-    //If you have any outlet to anything you have to a subclass because we couldnt have a outlet in our collectionView itself that pointed to emoji because there could be hundred cells so we cant do it
-    // So instead we have to create a new file which is a subclass of UICollectionView cell 
+
 }
 
-
-//Remember We cant drag and drop in collectionView as we havent implemented it but we can drop it in other apps , i.e. try picking emoji and dropping it in google search bar and it searches for it
-// So its pretty cool I got dragged up working to other apps I hardly had to do anything in my app just provide that attributed string i drag and drop so that's cool thing about drag and drop its so easy to get it going in both directions
-//So now we want it to drop so now we want emoji and drop it somewhere else in our collectionview
