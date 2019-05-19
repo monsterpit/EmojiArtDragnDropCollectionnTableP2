@@ -165,40 +165,15 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
     
     private func dragItems(at indexPath : IndexPath)-> [UIDragItem]{
         
-        //cellForItem(at: indexPath) so this is  like tableView.cellForRow(at: <#T##IndexPath#>)
-        // This only works for visble cells
-        // But ofcourse it's gonna work here we are dragging this thing it's got to be visible
-       // So I got the cell we are dragging right from here at indexpath
-        
         if let attributedString = (emojiCollectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell)?.label?.attributedText {
-            // So all this we grab our emoji at that indexPath
-            
-            /*
-            //NSItemProviderWriting Adopted By
-            CNContact
-            CNMutableContact
-            CSLocalizedString
-            MKMapItem
-            NSAttributedString
-            NSMutableString
-            NSString
-            NSTextStorage
-            NSURL
-            UIColor
-            UIImage
- */
+
             let dragItem = UIDragItem(itemProvider: NSItemProvider(object: attributedString))
-            
-            // dragItem.localObject this means if your drag is local within  your app you dont have to go to through that ItemProvider stuff , asynchornous of getting the data from that , remeber all of the stuff we have to do in the drop you dont have to do any of that, just grab the local object so this is the way fo shortcircuting all of that if it's a local drag
-            //but its gonna work to actually drag out of collectionView to other appbut when we are dragging locally we are gonna able to be use this so here I am just gonna return an array of just one dragItem
+
             dragItem.localObject = attributedString
             
             return [dragItem]
         }
-
         else{
-        //By the way If i couldnt get the attributed string from that cell for some reason then I am just gonna return empty
-        //so no dont do any drag then so its gonna know from itemsForBeginning to not begin a drag
             return []
         }
         
@@ -210,3 +185,6 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
 }
 
 
+//Remember We cant drag and drop in collectionView as we havent implemented it but we can drop it in other apps , i.e. try picking emoji and dropping it in google search bar and it searches for it
+// So its pretty cool I got dragged up working to other apps I hardly had to do anything in my app just provide that attributed string i drag and drop so that's cool thing about drag and drop its so easy to get it going in both directions
+//So now we want it to drop so now we want emoji and drop it somewhere else in our collectionview
