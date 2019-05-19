@@ -8,7 +8,9 @@
 
 import UIKit
 
-class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrollViewDelegate , UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout , UICollectionViewDragDelegate{
+class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrollViewDelegate , UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout , UICollectionViewDragDelegate,UICollectionViewDropDelegate{
+
+    
 
     
     
@@ -118,6 +120,8 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
             emojiCollectionView.delegate = self
             
             emojiCollectionView.dragDelegate = self
+            
+            emojiCollectionView.dropDelegate = self
         }
     }
     
@@ -154,6 +158,13 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
     
     // itemsForBeginning is the thing that tells dragging system here's what we are dragging  , so we have to provide dragItem to drag
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        
+        //MARK: - Context of Session to track who is it
+    // So what we gonna do is that when we start our drag up in itemForBeginning  we gonna set something in session called localContext and this is type Any
+        // This is just something in drag session that lets drop's people who drop know hey this is a local drag  and here's the context of it
+        // well this drag is coming from collectionview  I am gonna use collectionView as context
+        session.localContext = collectionView
+        
         return dragItems(at : indexPath)
     }
     
@@ -177,6 +188,95 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
             return []
         }
         
+    }
+    
+
+    
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        return session.canLoadObjects(ofClass: NSAttributedString.self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        
+        // intent says are you dropping into this cell or you wanna add a cell
+        // if we are dragging inside collectionView we dont want the emoji to be copied and we dont want a replica of it so we .move
+        // so for .move we have to know somehow that we are inside the collectionView
+        // So what we gonna do is that when we start our drag up in itemForBeginning  we gonna set something in session called localContext and this is type Any
+        
+        // So now we can look at the local context up here to determine where my drop proposal should be copy or move
+        
+        let isSelf = (session.localDragSession?.localContext as? UICollectionView) == collectionView
+        
+        return UICollectionViewDropProposal(operation: isSelf ? .move : .copy , intent: .insertAtDestinationIndexPath)
+    }
+    
+    
+    //When drop happens we have to update our model and our collectionView
+    //Also there are 2 different types of drop here
+    //There's a drop where its coming from my collectionView in which case i have to drop it in new place and remove it from old place because i am moving
+    //And then theirs a drop which is coming from some other app i.e. safari to collectionView tap and hold cursor on text and move it to collectionView
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        
+        //coordinator gives us the destination Path
+        // nil if we are putting it at start or end not in between of items
+        // So we are providing a default position
+        let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
+        // So now we now where we are dropping the drop and now its just matter of going through all the items  in coordinators items this items are UICollectionViews dropItems
+        // And they have very interesting peices of information for e.g.
+        
+        //if let sourceindexPath = item.sourceIndexPath This ensure that our drag is coming from ourself  so we dont even have to look at the localContext in this case to know this is coming from me
+        // And now we know the source and the destination
+        //If the item originated from the collection view, this property contains the item's original index path.
+
+        //So all we need to here is update our model and let source go into destination and then update the collectionview to remove the one from source and add it to other one
+        for item in coordinator.items{
+            if let sourceindexPath = item.sourceIndexPath{
+                
+                // As we stashed it to localObject we dont have to do NSProvider Stuff but we have to cast it  as NSAttributedString because its Any
+                if let dragItem = item.dragItem.localObject as? NSAttributedString {
+                    
+                    
+                    // ----------------------------------------------------///
+                 //   emojis.remove(at: sourceindexPath.item)
+                //    emojis.insert(dragItem.string, at: destinationIndexPath.item)
+                    
+                    //MARK:- Dont reload the data in middle of drag
+                    // Dont reload data in middle of drag because it resets the whole world it's bad dont do it
+                    //So instead we have to remove and insert the items separately
+                    
+                  //  collectionView.deleteItems(at: [sourceindexPath])
+                    
+                  //  collectionView.insertItems(at: [destinationIndexPath])
+                    
+                    // ----------------------------------------------------///
+                    
+                    // So this looks it will work fine but actualy its gonna crash the program
+                    // The reason for that is when you do multiple changes to collectionView each step will require model to be completly in sync which it wouldnt be until I do both of this the table wount be in sync with the model
+                   
+                    //MARK:- So dont forget to do batchUpdates if you do multiple adjustment to your tableView or CollectionView
+                    // theres a really cool way to get around that which is collectionView and tableView both has this methods called
+                    //collectionView.performBatchUpdates(<#T##updates: (() -> Void)?##(() -> Void)?##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+                    // It just has a closure , In that closure you can put any number of  this deleteItems ,insertItems,moveItems whatever you want and it will do them all as one operation so that it never gets out of sync with the model
+                    // It also has a nice completion thing when it's done with all update it will call that completion closure
+                    collectionView.performBatchUpdates({
+                        
+                        emojis.remove(at: sourceindexPath.item)
+                        emojis.insert(dragItem.string, at: destinationIndexPath.item)
+                        
+                        
+                        collectionView.deleteItems(at: [sourceindexPath])
+                        collectionView.insertItems(at: [destinationIndexPath])
+                        
+                    })
+                    
+                    //Then last thing we want to do is ask the coordinator to do the drop
+                    //The reason we need to do this is we need to animate the drop happening there
+                    
+                    coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+                }
+                
+            }
+        }
     }
     
     //For loading in collectionview all the cell are custom  cell so you have to a subclass it
