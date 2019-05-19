@@ -76,27 +76,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="990.5" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-uo-kcG">
-                                <rect key="frame" x="0.0" y="112" width="990.5" height="892"/>
-                                <subviews>
-                                    <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhS-qA-tbH">
-                                        <rect key="frame" x="0.0" y="0.0" width="990.5" height="980"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" priority="250" constant="990.5" id="KCt-Nr-P2T"/>
-                                            <constraint firstAttribute="height" priority="250" constant="980" id="o21-e8-RSw"/>
-                                        </constraints>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="top" secondItem="3M4-uo-kcG" secondAttribute="top" id="A2t-fy-ePJ"/>
-                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="centerX" secondItem="3M4-uo-kcG" secondAttribute="centerX" id="AxT-tQ-PlL"/>
-                                    <constraint firstAttribute="trailing" secondItem="GhS-qA-tbH" secondAttribute="trailing" id="Shz-f9-htu"/>
-                                    <constraint firstAttribute="bottom" secondItem="GhS-qA-tbH" secondAttribute="bottom" id="YsO-IC-9sC"/>
-                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="centerY" secondItem="3M4-uo-kcG" secondAttribute="centerY" id="ah0-eJ-cEU"/>
-                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="leading" secondItem="3M4-uo-kcG" secondAttribute="leading" id="fiF-3V-aVX"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Rl-uO-6xZ">
                                 <rect key="frame" x="0.0" y="24" width="990.5" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,8 +112,46 @@
                                             <outlet property="label" destination="0Iw-sF-deW" id="mgm-dY-3Vt"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DropPlaceholderCell" id="OA5-CE-v42">
+                                        <rect key="frame" x="90" y="0.0" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UTy-ZI-VRF">
+                                                    <rect key="frame" x="30" y="30" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="UTy-ZI-VRF" firstAttribute="centerX" secondItem="OA5-CE-v42" secondAttribute="centerX" id="fiN-qO-EtK"/>
+                                            <constraint firstItem="UTy-ZI-VRF" firstAttribute="centerY" secondItem="OA5-CE-v42" secondAttribute="centerY" id="hUy-HY-ymH"/>
+                                        </constraints>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-uo-kcG">
+                                <rect key="frame" x="0.0" y="112" width="990.5" height="892"/>
+                                <subviews>
+                                    <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhS-qA-tbH">
+                                        <rect key="frame" x="0.0" y="0.0" width="990.5" height="980"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="250" constant="990.5" id="KCt-Nr-P2T"/>
+                                            <constraint firstAttribute="height" priority="250" constant="980" id="o21-e8-RSw"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="top" secondItem="3M4-uo-kcG" secondAttribute="top" id="A2t-fy-ePJ"/>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="centerX" secondItem="3M4-uo-kcG" secondAttribute="centerX" id="AxT-tQ-PlL"/>
+                                    <constraint firstAttribute="trailing" secondItem="GhS-qA-tbH" secondAttribute="trailing" id="Shz-f9-htu"/>
+                                    <constraint firstAttribute="bottom" secondItem="GhS-qA-tbH" secondAttribute="bottom" id="YsO-IC-9sC"/>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="centerY" secondItem="3M4-uo-kcG" secondAttribute="centerY" id="ah0-eJ-cEU"/>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="leading" secondItem="3M4-uo-kcG" secondAttribute="leading" id="fiF-3V-aVX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

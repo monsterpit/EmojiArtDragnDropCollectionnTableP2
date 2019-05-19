@@ -276,6 +276,63 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
                 }
                 
             }
+            else{
+                // We dont have sourceindexPath that means it comes from somewhere else
+                
+                // Its quite easy but there's a little problem here if you are dragging something from outside and you drop it is that information immediately available? no you have to asynchronously go and fetch it from thjat thing well what the heck you gonna do with your table while you are off fetching the data what if it takes 10 seconds so what yu do is you place a placeholder in your table and collectionView manages all that for you so all you have to do is  when the data finally does  arrives to you tell the placeHolder context its called okay i got the info update your model and it will automatically swap out the placeholder cell for one of your cell that matches the  kind of data you have
+                
+                //UICollectionViewDropPlaceholder(insertionIndexPath: <#T##IndexPath#>, reuseIdentifier: <#T##String#>) requires where you gonna put this placeholder reuseIdentifier is asking for reuseIdentifier in you storyboard to use to creatthat thing so I am gonna call mine DropPlaceholderCell you can call anything you want this is just the string that we are using in our storyboard to create this thing
+                
+
+                
+                //Now what's interesting is you can also include a  closure and in that closure you can basically intialize thsi cell or do the same kind of thing you do  where you would do dequeReusableCell because that dequeReusableCell is never gonna be called is never gonna be called because its the placeHolder cell its not gonna call that thing so here you can do same kind of setup if you had outlet in your cell or whatever you can set them all up we are not gonna have any outlet's in our so we are not going to do it but that's where you would do it
+                
+//                let placeHolderContext  = coordinator.drop(
+//                    item.dragItem,
+//                    to: UICollectionViewDropPlaceholder(insertionIndexPath: destinationIndexPath, reuseIdentifier: "DropPlaceholderCell")
+//                ) {}
+                
+                //So it doesnt require a label in placeholderCell in storyboard has information hasnt arrived yet So instead I am gonna put an activity indicator in there
+                
+                                let placeHolderContext  = coordinator.drop(
+                                    item.dragItem,
+                                    to: UICollectionViewDropPlaceholder(insertionIndexPath: destinationIndexPath, reuseIdentifier: "DropPlaceholderCell")
+                                )
+                
+                //So now we have done placeholderCell in storyBoard ready to go all we need to do now  go get the data and when it arrives just tell the placeholder context here's go swap when out here's my model change
+                
+                // So I am gonna get the data alittle differently last time we used that method
+                // loadObjects on session to load up the objects remember that when we dropped the image in there this time i am just gonna grab one object
+                
+                //and it is back to me asynchronously with a provider
+                item.dragItem.itemProvider.loadObject(ofClass: NSAttributedString.self) { (provider, error) in
+                    
+                    
+                    
+                    //Has it is in async and we need to update UI we dispatch it to main Queue
+                    DispatchQueue.main.async {
+                        
+                        if let attributedString = provider as? NSAttributedString{
+                        placeHolderContext.commitInsertion(dataSourceUpdates: { (insertionIndexPath) in
+                            //Code to fix my model
+                            self.emojis.insert(attributedString.string, at: insertionIndexPath.item)
+                        })
+                        }
+                        else{
+                            //If we cant convert to NSAttributedString there may be a error so we ant to delete that placeholder
+                            placeHolderContext.deletePlaceholder()
+                        }
+                    
+                    }
+
+                }
+                
+                //That's it it's all we need to do and it will automatically replace that placeholder with the cell by calling the normal self.ItemAt method
+                
+                //Notice that insertionIndexPath might be different than the destinationIndexPath
+                //why? because this might have taken 10 seconds so might have changed other things in collectionView might have been going on new cell adding and other things came faster whatever So you are always using insertionIndexpath to update the model
+                // So how do I update the model here
+            }
         }
     }
     
