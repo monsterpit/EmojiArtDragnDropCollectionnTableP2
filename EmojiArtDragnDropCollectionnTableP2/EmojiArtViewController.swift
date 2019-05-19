@@ -24,8 +24,18 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
             scrollView.addSubview(emojiArtView)
         }
     }
+    @IBOutlet weak var scrollViewWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+    
     
     var emojiArtView = EmojiArtView()
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        scrollViewWidth.constant = scrollView.contentSize.width
+        
+        scrollViewHeight.constant = scrollView.contentSize.height
+    }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return emojiArtView
@@ -41,6 +51,11 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
             let size = newValue?.size ?? CGSize.zero
             emojiArtView.frame = CGRect(origin: CGPoint.zero, size: size)
             scrollView?.contentSize = size
+            
+            scrollViewWidth?.constant = size.width
+            
+            scrollViewHeight?.constant = size.height
+            
             if let dropZone = self.dropZone , size.width > 0 , size.height > 0 {
                 scrollView?.zoomScale = max(dropZone.bounds.size.width/size.width, dropZone.bounds.size.height/size.height )
             }

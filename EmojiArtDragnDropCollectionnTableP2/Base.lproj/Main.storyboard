@@ -78,16 +78,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-uo-kcG">
                                 <rect key="frame" x="0.0" y="24" width="990.5" height="980"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhS-qA-tbH">
+                                    <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhS-qA-tbH">
                                         <rect key="frame" x="0.0" y="0.0" width="990.5" height="980"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="250" constant="990.5" id="KCt-Nr-P2T"/>
+                                            <constraint firstAttribute="height" priority="250" constant="980" id="o21-e8-RSw"/>
+                                        </constraints>
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="leading" secondItem="3M4-uo-kcG" secondAttribute="leading" id="3L2-3J-fYj"/>
-                                    <constraint firstAttribute="bottom" secondItem="GhS-qA-tbH" secondAttribute="bottom" id="DB5-fg-ks7"/>
-                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="top" secondItem="3M4-uo-kcG" secondAttribute="top" id="DHX-6I-wwu"/>
-                                    <constraint firstAttribute="trailing" secondItem="GhS-qA-tbH" secondAttribute="trailing" id="L3y-12-Pv7"/>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="top" secondItem="3M4-uo-kcG" secondAttribute="top" id="A2t-fy-ePJ"/>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="centerX" secondItem="3M4-uo-kcG" secondAttribute="centerX" id="AxT-tQ-PlL"/>
+                                    <constraint firstAttribute="trailing" secondItem="GhS-qA-tbH" secondAttribute="trailing" id="Shz-f9-htu"/>
+                                    <constraint firstAttribute="bottom" secondItem="GhS-qA-tbH" secondAttribute="bottom" id="YsO-IC-9sC"/>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="centerY" secondItem="3M4-uo-kcG" secondAttribute="centerY" id="ah0-eJ-cEU"/>
+                                    <constraint firstItem="GhS-qA-tbH" firstAttribute="leading" secondItem="3M4-uo-kcG" secondAttribute="leading" id="fiF-3V-aVX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -103,6 +109,8 @@
                     <connections>
                         <outlet property="dropZone" destination="3M4-uo-kcG" id="94M-qd-8CL"/>
                         <outlet property="scrollView" destination="GhS-qA-tbH" id="O8t-xh-H1K"/>
+                        <outlet property="scrollViewHeight" destination="o21-e8-RSw" id="Wny-9K-0wY"/>
+                        <outlet property="scrollViewWidth" destination="KCt-Nr-P2T" id="76Q-2j-6T2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
