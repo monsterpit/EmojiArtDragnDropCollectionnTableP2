@@ -8,7 +8,9 @@
 
 import UIKit
 
-class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrollViewDelegate , UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrollViewDelegate , UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout , UICollectionViewDragDelegate{
+
+    
     
     //UICollectionViewDelegateFlowLayout this 1 you automatically get to be when you are delegate of collectionView
     // This is the delegate of the thing that does all text like flowing layout
@@ -114,6 +116,8 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
             emojiCollectionView.dataSource = self
             
             emojiCollectionView.delegate = self
+            
+            emojiCollectionView.dragDelegate = self
         }
     }
     
@@ -146,6 +150,58 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
         }
         
         return cell
+    }
+    
+    // itemsForBeginning is the thing that tells dragging system here's what we are dragging  , so we have to provide dragItem to drag
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return dragItems(at : indexPath)
+    }
+    
+    // So remember you can start a drag and add more items by tapping on them so you could be dragging multiple things at once that's easy to implement as well just like we have item
+    //Just like  we have "itemsForBeginning" we have "itemsForAddingTo"
+    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        return dragItems(at : indexPath)
+    }
+    
+    private func dragItems(at indexPath : IndexPath)-> [UIDragItem]{
+        
+        //cellForItem(at: indexPath) so this is  like tableView.cellForRow(at: <#T##IndexPath#>)
+        // This only works for visble cells
+        // But ofcourse it's gonna work here we are dragging this thing it's got to be visible
+       // So I got the cell we are dragging right from here at indexpath
+        
+        if let attributedString = (emojiCollectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell)?.label?.attributedText {
+            // So all this we grab our emoji at that indexPath
+            
+            /*
+            //NSItemProviderWriting Adopted By
+            CNContact
+            CNMutableContact
+            CSLocalizedString
+            MKMapItem
+            NSAttributedString
+            NSMutableString
+            NSString
+            NSTextStorage
+            NSURL
+            UIColor
+            UIImage
+ */
+            let dragItem = UIDragItem(itemProvider: NSItemProvider(object: attributedString))
+            
+            // dragItem.localObject this means if your drag is local within  your app you dont have to go to through that ItemProvider stuff , asynchornous of getting the data from that , remeber all of the stuff we have to do in the drop you dont have to do any of that, just grab the local object so this is the way fo shortcircuting all of that if it's a local drag
+            //but its gonna work to actually drag out of collectionView to other appbut when we are dragging locally we are gonna able to be use this so here I am just gonna return an array of just one dragItem
+            dragItem.localObject = attributedString
+            
+            return [dragItem]
+        }
+
+        else{
+        //By the way If i couldnt get the attributed string from that cell for some reason then I am just gonna return empty
+        //so no dont do any drag then so its gonna know from itemsForBeginning to not begin a drag
+            return []
+        }
+        
     }
     
     //For loading in collectionview all the cell are custom  cell so you have to a subclass it
