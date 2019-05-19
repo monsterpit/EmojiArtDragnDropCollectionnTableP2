@@ -8,7 +8,14 @@
 
 import UIKit
 
-class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrollViewDelegate {
+class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrollViewDelegate , UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    
+    //UICollectionViewDelegateFlowLayout this 1 you automatically get to be when you are delegate of collectionView
+    // This is the delegate of the thing that does all text like flowing layout
+    // remember collectionView layout is completely configurable  but this 1 is the default one so throw this 1 in too it helps escape completion and all those stuffs
+    
+    
+
     @IBOutlet weak var dropZone: UIView! {
         didSet{
             dropZone.addInteraction(UIDropInteraction(delegate: self))
@@ -102,7 +109,48 @@ class EmojiArtViewController: UIViewController,UIDropInteractionDelegate,UIScrol
         }
     }
     
+    @IBOutlet weak var emojiCollectionView: UICollectionView!{
+        didSet{
+            emojiCollectionView.dataSource = self
+            
+            emojiCollectionView.delegate = self
+        }
+    }
     
+    //map just takes in an collection and turn's it into an array where it executes a closure on each of the element
+    var emojis = "🍭👻🤪🧞‍♂️🦊🦄🐝🦍🐉🐲🍩⚽️✈️".map { String($0)}
+    
+    // so there are 3 required numberOfItemsInSection,cellForItemAt , numberOfSection
+    // we dont want to implement numberOfScetions as it defaults to 1 that's true for tableView and collectionView
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return emojis.count
+    }
+    
+    //MARK:- Dynamic Font accessibility UIFontMetrics Accessbility
+    private var font : UIFont  {
+        //WithSize so I want 64 points but I want to scale with with whatever the accessibility thing is
+        // So If accessibility font is at middle the font I am gonna do is 64 , can do bigger and wit will be bigger than 64 and smaller
+        // Now this wouldnt work very well because I dont change collectionview size < If i set this big it will be cut off and If I set it really small the collection viwe wont shrink up to kind of hold it
+        //TODO:- To make collectionView cell size accordin to font accessibility size using layout constraint that  is constaint layout outlet
+        return UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.preferredFont(forTextStyle: .body).withSize(64.0))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmojiCell", for: indexPath)
+        
+        if let emojiCell = cell as? EmojiCollectionViewCell{
+            
+            let text = NSAttributedString(string: emojis[indexPath.item], attributes: [.font : font])
+            
+            emojiCell.label.attributedText = text
+        }
+        
+        return cell
+    }
+    
+    //For loading in collectionview all the cell are custom  cell so you have to a subclass it
+    //If you have any outlet to anything you have to a subclass because we couldnt have a outlet in our collectionView itself that pointed to emoji because there could be hundred cells so we cant do it
+    // So instead we have to create a new file which is a subclass of UICollectionView cell 
 }
 
 

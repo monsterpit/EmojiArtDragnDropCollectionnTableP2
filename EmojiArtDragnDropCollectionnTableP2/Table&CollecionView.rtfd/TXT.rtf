@@ -1,8 +1,10 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
-{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 Helvetica-Oblique;
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Italic;
 }
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red64\green128\blue2;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;\csgenericrgb\c100000\c100000\c100000;\csgenericrgb\c25098\c50194\c896;
+}
 \margl1440\margr1440\vieww9000\viewh8400\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\qc\partightenfactor0
 
@@ -11,36 +13,36 @@
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f1\b0 \cf0 {{\NeXTGraphic Screenshot 2019-05-02 at 12.22.51 PM.png \width13640 \height4460 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+\b0 \cf0 {{\NeXTGraphic Screenshot 2019-05-02 at 12.22.51 PM.png \width13640 \height4460 \appleattachmentpadding0 \appleembedtype0 \appleaqc
 }¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 \
+\b \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f1\b0 \cf0 So what are tableView and CollectionView?\
+\b0 \cf0 So what are tableView and CollectionView?\
 They are all over iOS\
 They are UIScrollView subclasses \
 that are used to provide unbound access to unbounded amounts of information and display them in a slightly different way\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 A tableView display's the information as a big long list \
+\b \cf0 A tableView display's the information as a big long list \
 The list might be divided into sections , but it's a big long list
-\f1\b0 \
+\b0 \
 \
 \pard\tx560\tx1120\tx1436\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 CollectionView presents it in a configurable way , almost any 2 dimensional way ,
-\f1\b0 \
+\b \cf0 CollectionView presents it in a configurable way , almost any 2 dimensional way ,
+\b0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 Now by default the way it presents it is called flow layout 
-\f1\b0 \
+\b \cf0 Now by default the way it presents it is called flow layout 
+\b0 \
 
-\f0\b And flow layout , you wanna think of as being like text\
+\b And flow layout , you wanna think of as being like text\
 If you have text it flows across from left to right and when it runs out of space it goes to the next line and the it flows some more and next line and that's how collectionView by default lay's out \
 You give it a bunch of items to layout , they might be different sizes , whatever and it will just start laying them out  and wrapping to the next line and it will even justify you know how text is justified on both sides it will do that as well if you want , So that's how flow layout works 
-\f1\b0 \
+\b0 \
 Now I say collectionView is arbitrary like people have written layout for collection view they are fan of cards\
 you pick a card and it's no problem it's quite easy to actually write a layout like that\
 \
@@ -49,8 +51,8 @@ You should know that there is a way you could write your own layout that's not f
 \
 \
 TableView and CollectionView are both API , they are both identical  , the only difference is we are talking 
-\f0\b rows vs arbitrary items
-\f1\b0  that are being flowed or otherwise laid out in too be \
+\b rows vs arbitrary items
+\b0  that are being flowed or otherwise laid out in too be \
 \
 \
 \
@@ -76,8 +78,8 @@ or the list can be divided into sections , junk food , fruits , desserts , veget
 \cf0 \
 \
 So those are sections in the tableView and it can show little bit of simple 
-\f0\b ancillary information
-\f1\b0  kind of for free , like here I have got a little image of the food \
+\b ancillary information
+\b0  kind of for free , like here I have got a little image of the food \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screenshot 2019-05-02 at 12.36.47 PM.png \width14060 \height8100 \appleattachmentpadding0 \appleembedtype0 \appleaqc
@@ -96,13 +98,13 @@ So those are sections in the tableView and it can show little bit of simple
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 And it has 4 different ways to present the simple information \
+\b \cf0 And it has 4 different ways to present the simple information \
 (1) subtitle style  : - where the ancillary information appears  right below the main information \
 (2) left detail  :- everything over on left\
 (3) right detail : - where the ancillary information is on right\
 (4)basic style :- where you dont see the ancillary information\
 So this 4 styles where kinda built into tableView you kinda get them for free 
-\f1\b0 \
+\b0 \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screenshot 2019-05-02 at 12.37.51 PM.png \width14060 \height8340 \appleattachmentpadding0 \appleembedtype0 \appleaqc
@@ -111,16 +113,16 @@ So this 4 styles where kinda built into tableView you kinda get them for free
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 But it also has very powerful style called custom style\
+\b \cf0 But it also has very powerful style called custom style\
 A custom style look the rows can be anything you want if fact this UI you just build it in your storyboard using AutoLayout and all those things to build whatever kind of UI you want 
-\f1\b0 \
+\b0 \
 \
 \
 \
 \
 
-\f0\b Now collectionView all cells are custom , collectionView doesnt have those four simple one's 
-\f1\b0 \
+\b Now collectionView all cells are custom , collectionView doesnt have those four simple one's 
+\b0 \
 Alright so this is what how these things can look how table you can look so\
 \
 \
@@ -132,20 +134,20 @@ Alright so this is what how these things can look how table you can look so\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0  (*****)
-\f1\b0 \
+\b \cf0  (*****)
+\b0 \
 Sections can be made to look like kind of like they are grouped \
 You probably noticed this UI it's from setting app in iOS\
 
-\f0\b we almost always only use this grouped style like this when the data in the table is static 
-\f1\b0 , in other words is not showing arbitrary information like a list of foods that might be changing over time it's showing 
-\f0\b fixed things like here the accessibility settings those never change they are fixed\
+\b we almost always only use this grouped style like this when the data in the table is static 
+\b0 , in other words is not showing arbitrary information like a list of foods that might be changing over time it's showing 
+\b fixed things like here the accessibility settings those never change they are fixed\
 So that's the only time we use the 
-\f2\i\b0 group style
-\f0\i0\b  otherwise we use what's called 
-\f2\i\b0 plain style 
-\f0\i0\b  , thats all the things we saw earlier
-\f1\b0 \
+\i\b0 group style
+\i0\b  otherwise we use what's called 
+\i\b0 plain style 
+\i0\b  , thats all the things we saw earlier
+\b0 \
 \
 \
 \
@@ -154,8 +156,8 @@ So that's the only time we use the
 \
 \
 
-\f0\b CollectionView
-\f1\b0 \
+\b CollectionView
+\b0 \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screenshot 2019-05-02 at 1.07.33 PM.png \width13780 \height8200 \appleattachmentpadding0 \appleembedtype0 \appleaqc
@@ -210,27 +212,27 @@ So most important thing to understand in API or using these things is where does
 and we know that in MVC  views are not allowed to own their data so we cant have a var in tableView here's the data , we cant just give it the data \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 The tableView has to ask for the data \
+\b \cf0 The tableView has to ask for the data \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f1\b0 \cf0 \
+\b0 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 It ask for the data in the same way as delegation , there's going to be a var it's called dataSource
-\f1\b0 \
+\b \cf0 It ask for the data in the same way as delegation , there's going to be a var it's called dataSource
+\b0 \
 Both tableView and CollectionView have this and 
-\f0\b that datasource is it's type is a protocol 
-\f1\b0 and in that protocol is a bunch of methods that ask for the data... give me the data \
+\b that datasource is it's type is a protocol 
+\b0 and in that protocol is a bunch of methods that ask for the data... give me the data \
 Constantly asking for the data , that's how they get their data  \
 \
 Now tableView and collectionView also have a 
-\f0\b delegate
-\f1\b0  that's a different var \
+\b delegate
+\b0  that's a different var \
 and 
-\f0\b that's controls how the data is displayed like how the collectionView and the tableview are configured not what it's displaying not the actual data
-\f1\b0  just 
-\f0\b kind of the how
-\f1\b0  \
+\b that's controls how the data is displayed like how the collectionView and the tableview are configured not what it's displaying not the actual data
+\b0  just 
+\b kind of the how
+\b0  \
 \
 \
 \
@@ -276,18 +278,18 @@ or in collectionView how many items are in this section\
 Notice the argument there though there green type IndexPath\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 IndexPath is just a tiny little structure that contains the section and the row  or the section and the item
-\f1\b0 \
+\b \cf0 IndexPath is just a tiny little structure that contains the section and the row  or the section and the item
+\b0 \
 So it's just a way to combine the section of row ,\
  So that collectionView and tableView can ask you very simply give me the data this section and row and it gives you an IndexPath \
 So nothing special about an IndexPath \
 It literally just has var's row item and section those are only vars that you are going to use when you use IndexPath in these classes\
 \
 So divine into 
-\f0\b cell for row
-\f1\b0  and IndexPath  for tableView  , for collectionView it's same its just called 
-\f0\b cell for item 
-\f1\b0 at IndexPath\
+\b cell for row
+\b0  and IndexPath  for tableView  , for collectionView it's same its just called 
+\b cell for item 
+\b0 at IndexPath\
 \
 \
 \
@@ -302,14 +304,14 @@ So divine into
 So this method is going to return a UIView \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 You see that red thing UITableViewCell that is a subclass of UIView\
+\b \cf0 You see that red thing UITableViewCell that is a subclass of UIView\
 This is the view that going to be used to draw the row or a item in a collectionView
-\f1\b0 \
+\b0 \
 but Its a little bit of complexity here\
 because this first line of code this is always gonna be pretty much the first line of code in cellForRowAt method \
 which is 
-\f0\b dequeueReusableCell(withIdentifier :  "CellID", for : index)
-\f1\b0 \
+\b dequeueReusableCell(withIdentifier :  "CellID", for : index)
+\b0 \
 \
 \
 \
@@ -321,17 +323,17 @@ which is
 \
 (******)\
 So what is 
-\f0\b dequeueReusableCell(withIdentifier :  "CellID", for : index) ???\
+\b dequeueReusableCell(withIdentifier :  "CellID", for : index) ???\
 
-\f1\b0 First of all lets understand reuse .\
+\b0 First of all lets understand reuse .\
 If I had a tableView with 10000 things in it  , let's say all the songs in my iPod library ,10000 of them in there and I had 10000 views each of which might have you know the album cover art and honestly imagine that would just be ridiculously inefficient 10000 UIViews all populated\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 No way the tableView actually only creates these UITableViewCell for the visible rows and as you scroll through and they fly off the top it reuses them and put them on the bottom ,\
+\b \cf0 No way the tableView actually only creates these UITableViewCell for the visible rows and as you scroll through and they fly off the top it reuses them and put them on the bottom ,\
 So it's constantly reusing these views as you scroll through your data \
 which makes perfect sense right for efficiency \
 that's exactly what you want to do so when things fly off the top no longer in view the cell that was displaying them that the UITableViewCell which is a UIView it goes into a reuse pool and you get things out of that with that method dequeueReusableCell ,
-\f1\b0  it gives cell out of it ,\
+\b0  it gives cell out of it ,\
 but what if that pool of reusable things is empty like let's say your table just came on screen ,well obviously there's none in there so then what happens \
 \
 \
@@ -348,20 +350,20 @@ but what if that pool of reusable things is empty like let's say your table just
 (*****)\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 when you dequeueReusableCell you still get a cell where does it come from?\
+\b \cf0 when you dequeueReusableCell you still get a cell where does it come from?\
 well the answer is it's created by copying a prototype that you create in your storyboard , 
-\f1\b0 \
+\b0 \
 \
 So you gonna build this cell  with all the labels and buttons and images that you want build it right there using autoLayout in your storyboard and \
 then it's going to make copies of that everytime it needs 1 and it cant reuse 1 
-\f0\b \
+\b \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f1\b0 \cf0 \
+\b0 \cf0 \
 So that's how this is gonna work and 
-\f0\b \
+\b \
 
-\f1\b0 Here's an example of it , so this is a screenshot  from my storyboard this is like top of my tableViewController right here\
+\b0 Here's an example of it , so this is a screenshot  from my storyboard this is like top of my tableViewController right here\
 I got 2 cells here , 2 prototypes\
 the first 1 is just a basic cell\
 and the second 1 is the complicated cell  which got an image  and category and food and the name of the food  and some details about that , etc.\
@@ -378,9 +380,9 @@ and the second 1 is the complicated cell  which got an image  and category and f
 \
 So this are 2 separate prototypes in here\
 And for each of them I am going to set there style and also give them identifier
-\f0\b \
+\b \
 
-\f1\b0 \
+\b0 \
 You see how the top one has the identifier "FoodCell"\
 and the bottom I gave it the identifier "CustomFoodCell"\
 So this is just a string that you are going to use to identify which cell you want when you are dequeueing a reusable cell \
@@ -399,8 +401,8 @@ All the views in there the imageView and the textViews would all be copied for y
 So now you understand this yellow line \
 dequeueReusableCell with identifier that's like "FoodCell" or "CustomFoodCell" as which of the prototypes you want \
 and of course
-\f0\b  for : indexPath 
-\f1\b0 is the index path we are at\
+\b  for : indexPath 
+\b0 is the index path we are at\
 Because we are going to be ask to create something for that indexPath .\
 \
 The facts that these cells are  reused has big implications for multithreading ,\
@@ -454,18 +456,18 @@ subtitle, left detail ,  right detail , basic or whether it's a custom cell  ("A
 So lets look at the basic one's \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 (*****)Basically tableViewCell  has couple of 
-\f2\i\b0 outlets
-\f0\i0\b  on it called textLabel and detailTextLabel  
-\f1\b0 \
+\b \cf0 (*****)Basically tableViewCell  has couple of 
+\i\b0 outlets
+\i0\b  on it called textLabel and detailTextLabel  
+\b0 \
 that you can just set \
 
-\f0\b For the defaults it also has another 1 called imageView a little imageView can appear on the left of the cell 
-\f1\b0 \
+\b For the defaults it also has another 1 called imageView a little imageView can appear on the left of the cell 
+\b0 \
 So if that's good enough for you then you can just use those outlets and you are good to go \
 
-\f0\b (*****)UITableViewCell is just a view  it happens to have outlets it's a view   with outlets 
-\f1\b0 \
+\b (*****)UITableViewCell is just a view  it happens to have outlets it's a view   with outlets 
+\b0 \
 we have never seen views with outlets only controllers have outlets up till now \
 But that's not good enough and you need something complicated like that detail Apple cell that we had right there then you are gonna have to make a custom subclass of UITableViewCell.\
 \
@@ -501,13 +503,13 @@ So we cant use our controller as a place for outlet\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 So first time we are actually going to put our outlets in a view  and this view has to be a subclass of UITableViewCell
-\f1\b0  that thing that the cellForRowAt returns \
+\b \cf0 So first time we are actually going to put our outlets in a view  and this view has to be a subclass of UITableViewCell
+\b0  that thing that the cellForRowAt returns \
 So you gonna make a subclass of it , myTableViewCell  and you are gonna put the outlets in there , so each row it's gonna have its own tableViewCell and each TableViewCell is going to have its own outlets\
 
-\f0\b  even the basic and subtitle ones have their own outlets textLabel , detailTextLabel  and imageView \
+\b  even the basic and subtitle ones have their own outlets textLabel , detailTextLabel  and imageView \
 but your can have whatever outlets you want
-\f1\b0 \
+\b0 \
 Because you are  just gonna be a class you are gonna write \
 \
 \
@@ -537,11 +539,11 @@ So that's how you load up cells \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 In collectionView you always have to do this way ,\
+\b \cf0 In collectionView you always have to do this way ,\
 CollectionView doesn't has no basic or subtitle\
  and in tableview anytime you have anything more than just the simple cells you have to do it this way \
 But its done the exactly the same way in the both collectionView and tableView
-\f1\b0 \
+\b0 \
 \
 \
 \
@@ -552,8 +554,8 @@ But its done the exactly the same way in the both collectionView and tableView
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc\partightenfactor0
 
-\f0\b \cf0 Static TableView
-\f1\b0 \
+\b \cf0 Static TableView
+\b0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
@@ -564,22 +566,22 @@ But its done the exactly the same way in the both collectionView and tableView
 \
 Static tableView \
 So sometimes in a tableView we only use it to layout our UI we are not actually using it as a place to have arbitrary amounts of data , it has a 
-\f0\b fixed about of data
-\f1\b0  , using this is something like a settings app or a preferences panel in our app \
+\b fixed about of data
+\b0  , using this is something like a settings app or a preferences panel in our app \
 w
-\f0\b here everything is fixed and we are just using it to group things and layout things in nice rows 
-\f1\b0 .\
+\b here everything is fixed and we are just using it to group things and layout things in nice rows 
+\b0 .\
 So when we do that we dont have to do any of this stuff number of rows and sections and add none of that and cellForRowAt \
 because we all do it directly in our storyboard and we can wire the things in the rows directly  to our controller \
 Why because there's only one of everything , this is not a prototype that gets copied because it can be static \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 the data is static so we can just go directly to our controller in this case , it's quite easy and so it's not uncommon to use this\
+\b \cf0 the data is static so we can just go directly to our controller in this case , it's quite easy and so it's not uncommon to use this\
 and the way you do this kind a make a table into this is you go click on the table on storyboard and change it's content right there to static cell by Default it will be dynamic prototypes
-\f1\b0 \
+\b0 \
 But you are going to set it to static cell and btw the style there's almost always 
-\f0\b grouped
-\f1\b0  remember I showed you that grouped style like it's in the settings app that's pretty much what you are going to use when you have static cell that's what looks the best when it's static \
+\b grouped
+\b0  remember I showed you that grouped style like it's in the settings app that's pretty much what you are going to use when you have static cell that's what looks the best when it's static \
 \
 Then you go into the document outline \
 This is little obscure but dont forget this piece\
@@ -614,11 +616,11 @@ Segueing from tableView\
 So I want to click on a row and have it segue this is absolutely exactly straightforward as you might think until  we get to prepareForSegue\
 \
 I also want to talk about this 
-\f0\b detail Disclosure Accessory 
-\f1\b0 \
+\b detail Disclosure Accessory 
+\b0 \
 So if you inspect your tableViewCell and you go over into the inspector and under accessory we choose "
-\f0\b Detail Disclosure
-\f1\b0 "\
+\b Detail Disclosure
+\b0 "\
 We get a little i with a circle around it and you can segue from it  or from the row \
 So if someone click's on the row it will do one segue if they click on this little thing it will do different segue \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
@@ -738,10 +740,10 @@ and then you assign it to the public API of the MVC you are segueing in to\
 So that's the magic\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 Segueing the sender is gonna be tableViewCell you need to go to indexPath(for : cell) to find out which indexPath then you can segue it.\
+\b \cf0 Segueing the sender is gonna be tableViewCell you need to go to indexPath(for : cell) to find out which indexPath then you can segue it.\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f1\b0 \cf0 \
+\b0 \cf0 \
 \
 \
 \
@@ -762,12 +764,12 @@ What about segueing from a collectionView Item ?\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\tx19865\pardirnatural\partightenfactor0
 \cf0 Segueing through a CollectionView \
 CollectionView Item this is actually best done with
-\f0\b  target action
-\f1\b0  kind of\
+\b  target action
+\b0  kind of\
 CollectionViews delegate has method in it which is called everytime  an item gets touched on\
 It's called 
-\f0\b collectionView( didSelectItemAtIndexPath)
-\f1\b0 \
+\b collectionView( didSelectItemAtIndexPath)
+\b0 \
 And from here use performSegue and then prepare normally , now when you do perform Segue from here , probably the sender that "any" you gonna specify that make sense to you and use that in the prepare ,\
  So that's the way to segue from cells in the collectionView\
 You can use that same strategy UITableView\
@@ -793,16 +795,16 @@ Something to think about table and collectionViews are what happens to you when 
 You got this tableView showing all your songs in your iPod and then you add a song somehow it's gonna update , or a new food is get discovered , something in our food list has to change ,\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0  So what you do , well there is a method in tableView and collectionView called reloadData()\
+\b \cf0  So what you do , well there is a method in tableView and collectionView called reloadData()\
 that will cause all of those methods i.e. numberOfRows in section , number of sections, tableviewCell, give me the tableView cell , it will call them all again
-\f1\b0 \
+\b0 \
 for all the visible cells we will go get a new tableView cells , reload your whole tableview basically \
 \
 It's a little heavy handed , it's not too bad has it's actually only gonna call that get me the self.rowAtIndexPath thing it's only gonna call that for the visible cells , so that's not too bad actually\
 
-\f0\b But there are finer grained one's like \
+\b But there are finer grained one's like \
 reloadRows(at : indexPath)     
-\f1\b0  \
+\b0  \
 So it gives an array of index paths and you can reload just those rows\
 \
 and collectionView has similar things, \
@@ -818,62 +820,63 @@ You dont really want your table or your collectionView to get out sync with your
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic Screenshot 2019-05-03 at 12.28.57 PM.png \width14240 \height8380 \appleattachmentpadding0 \appleembedtype0 \appleaqc
-}¬}\
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b \cf0 \
+\b \cf0 \
 How about the height of the rows ? how do we determine the height of these rows ...
-\f1\b0 \
+\b0 \
 well there are 3 ways really for tableView rows\
 
-\f0\b 1) var in tableView called rowHeight  
-\f1\b0    \
+\b 1) var in tableView called rowHeight  
+\b0    \
 well this is also settable in storyboard , this just fixes the rows that are always going to be that height and that works for the basic rows and things like that \
 
-\f0\b 2)Setting the row height using autolayout
-\f1\b0 \
+\b 2)Setting the row height using autolayout
+\b0 \
 So you got a complicated thing and maybe sometimes it's fruit has a lot of detail information , so cell needs to be big and sometimes fruit has very little and cell will be small\
 So you setup your autolayout properly so that it's pushing out on a generic View ,\
  So you gonna put a generic UiView as the top-level View in your row and you put all your stuff inside  and then have constraints that push that thing out , push that generic view out \
 And then have the genericView pinned to the edges of the row\
 And if you do that then tableView will be able to come along AutoLayout thing and it will know what size it has to be \
 
-\f0\b So to do that you have to set the row height instead of to a number you set it to UITableViewAutomaticDimension  that's a special value that autoLayout thing \
+\b So to do that you have to set the row height instead of to a number you set it to UITableViewAutomaticDimension  that's a special value that autoLayout thing \
  (rowHeight = UITableViewAutomaticDimension)
-\f1\b0 \
+\b0 \
 as you can imagine that's quite expensive , you are not going to do it 10000 times for your iPod library\
 So you also have to set it's estimatedRowHeight \
 and the estimatedRowHeight just tells tableView for the cells that are not on screen assume they are this big , don't go autolayout them , \
 So that's something to consider\
 3)Another way you can set height is by implementing this method \
 
-\f0\b tableView(UITableView, \{estimated\}heightForRowAt indexPath : IndexPath ) -> CGFloat
-\f1\b0 \
+\b tableView(UITableView, \{estimated\}heightForRowAt indexPath : IndexPath ) -> CGFloat
+\b0 \
 and 
-\f2\i this will return the height for the row at that indexPath , now if you can much more efficiently calculate the height without doing all the autoLayout stuff then this is a great one for you to do
-\f1\i0 \
+\i this will return the height for the row at that indexPath , now if you can much more efficiently calculate the height without doing all the autoLayout stuff then this is a great one for you to do
+\i0 \
 maybe you know that certain cells are one height and certain cells are other height and that's it you wanna just use 1 of these 2 and you gonna return which 1 it is \
 or maybe all your cells are the same height and it's just more convenient to calculate and return it here that's perfectly fine \
 \
 \
 \
 
-\f0\b CollectionView has a similar thing 
-\f1\b0 \
+\b CollectionView has a similar thing 
+\b0 \
 the only thing about collectionView \
 1) which is 
-\f0\b sizeForItemAt
-\f1\b0 \
+\b sizeForItemAt
+\b0 \
  because remember these 
-\f0\b items are rectangles  in the collectionView  not rows
-\f1\b0  \
+\b items are rectangles  in the collectionView  not rows
+\b0  \
 they
-\f0\b  dont have height they are rectangles ,
-\f1\b0  the only thing about that is notice this extra little argument there besides sizeForItemAt is \
+\b  dont have height they are rectangles ,
+\b0  the only thing about that is notice this extra little argument there besides sizeForItemAt is \
 
-\f0\b layout CollectionViewLayout  \
+\b layout CollectionViewLayout  \
 that's the magic thing that's doing flow  layout  by default  but if you provide a collectionView layout you can do other kinds of layouts ,
-\f1\b0  \
+\b0  \
 But for your purposes in this class at least beginning using this that's always gonna be a UICollectionView flowlayout  which does the flowing ,\
 that's why there's that extra argument here\
 \
@@ -889,20 +892,20 @@ that's why there's that extra argument here\
 \cf0 {{\NeXTGraphic Screenshot 2019-05-03 at 1.05.39 PM.png \width13980 \height4320 \appleattachmentpadding0 \appleembedtype0 \appleaqc
 }¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
-\cf0 \
+\
 \
 How about those header ? \
 To put the headers in there remember you know like junk food food and dessert and fruits and vegetables those are headers and in tableView its super easy\
 You just have to implement this method\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b tableView(_ tv : UITV, titleForHeaderInSection section : Int) -> String?
-\f1\b0 \
+\b \cf0 tableView(_ tv : UITV, titleForHeaderInSection section : Int) -> String?
+\b0 \
 tableView titleForHeaderInSection it returns a string it just put's in there couldn't be easier\
 \
 
-\f0\b There is actually another one  that returns a UIView , So you can actually have your headers be UIViews with anything you want in there
-\f1\b0 \
+\b There is actually another one  that returns a UIView , So you can actually have your headers be UIViews with anything you want in there
+\b0 \
 \
 \
 \
@@ -915,13 +918,13 @@ tableView titleForHeaderInSection it returns a string it just put's in there cou
 \cf0 {{\NeXTGraphic Screenshot 2019-05-03 at 1.08.30 PM.png \width14380 \height7080 \appleattachmentpadding0 \appleembedtype0 \appleaqc
 }¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \
+\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
-\cf0 \
 
-\f0\b CollectionView much more difficult to do section headers in than tableView\
+\b \cf0 CollectionView much more difficult to do section headers in than tableView\
 \
 That's because collectionView their header Views are reusable just like the cells are 
-\f1\b0 \
+\b0 \
 and I guess this decision was made because you could imagine collectionView have a lot of sections \
 where table its unlikely you are gonna have a table with thousands sections \
 CollectionView maybe you can have alot \
@@ -931,26 +934,28 @@ What you do to enable your  headers is you inspect your collectionView and click
 and then a little thing will appear in your storyboard that you can go drag things into that little thing is a prototype\
  and it's going to be repeated for every section header , you can put anything you want in there though \
 but you gonna have to create subclass and the subclasses of something called 
-\f0\b UIReusableView
-\f1\b0  instead of UITableViewCell or UICollectionViewCell\
+\b UIReusableView
+\b0  instead of UITableViewCell or UICollectionViewCell\
 So you gonna subclasses those out , put your outlets in there\
 and then you are going to implement this method\
 
-\f0\b viewForSupplementaryElementOfKind
-\f1\b0 \
+\b viewForSupplementaryElementOfKind
+\b0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f2\i which is of like cellForRowAtIndexPath but just for the header
-\f1\i0 \
+\i \cf0 which is of like cellForRowAtIndexPath but just for the header
+\i0 \
 and inside there you are going to use another \
 dequeue method  this one's called \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b dequeueReusableSupplementaryView(ofKind : withReuseIdentifier:for:)
-\f1\b0 \
+\b \cf0 dequeueReusableSupplementaryView(ofKind : withReuseIdentifier:for:)
+\b0 \
 dequeueReusableSupplementaryView ofKind withReuseIdentifier for IndexPath and that's going to make a copy of that prototype and reuse them as they scroll around on screen \
 So actually if wanna have headers you are gonna have to figure out all this out \
 
-\f0\b header's and footers that's for collectionView only
-\f1\b0 \
+\b header's and footers that's for collectionView only
+\b0 \
 \
 \
  \
@@ -963,8 +968,7 @@ So actually if wanna have headers you are gonna have to figure out all this out 
 \cf0 {{\NeXTGraphic Screenshot 2019-05-03 at 1.14.18 PM.png \width13720 \height6080 \appleattachmentpadding0 \appleembedtype0 \appleaqc
 }¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 \cf0 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
-\cf0 \
+\
 \
 \
 There are dozens of other methods for these classes these are very large sophisticated classes you can swipe to delete rows , you can move the rows around in tableView \
@@ -973,4 +977,36 @@ i mean there's just so much  in there it's hard to even get started on it\
 (RnD for documentation of tableView and CollectionView for all methods)\
 For all these classes read the text at the beginning of the overview it will give you an idea what these things can do and what they are capable of  etc.\
  \
-}
+\
+\
+\
+\
+\
+\
+Collection can be scrollable only in vertical or horizontal direction not in both directions\
+\
+in collectionView never make your cell size bigger than non scrollable width or height of the collectionView , CollectionView does not know how to have cells that are bigger than it will fit in the direction it doesn't scroll , So you have to ensure you never make cell size bigger than width or height of the collectionView , it doesn't know how to deal with that\
+\
+\
+\
+\pard\tx593\pardeftab593\pardirnatural\partightenfactor0
+
+\f1 \cf2 \cb3     
+\f2\i \cf4 // so there are 3 methods of protocols required numberOfItemsInSection,cellForItemAt , numberOfSection
+\f0\i0 \cf0 \
+
+\f1 \cf2     
+\f2\i \cf4 // we dont want to implement numberOfScetions as it defaults to 1 that's true for tableView and collectionView\
+\
+\
+
+\f1\i0 \cf2     
+\f2\i \cf4 //For loading in collectionview all the cell are custom  cell so you have to a subclass it
+\f0\i0 \cf0 \
+
+\f1 \cf2     
+\f2\i \cf4 //If you have any outlet to anything you have to a subclass because we couldnt have a outlet in our collectionView itself that pointed to emoji because there could be hundred cells so we cant do it
+\f0\i0 \cf0 \
+
+\f1 \cf2     
+\f2\i \cf4 // So instead we have to create a new file which is a subclass of UICollectionView cell }
